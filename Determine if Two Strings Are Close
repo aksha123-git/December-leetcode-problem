@@ -1,0 +1,25 @@
+check 2 things -> frequency of each character in two string
+->check unique character
+
+
+
+
+class Solution {
+public:
+    bool closeStrings(string word1, string word2) {
+        vector<int> vv1(26,0), vv2(26,0), vv3(26,0), vv4(26,0);
+        for(auto x : word1){
+            vv1[x-'a']++;
+            vv3[x - 'a'] = 1;
+        }
+        for(auto x : word2){
+            vv2[x-'a']++;
+            vv4[x - 'a'] = 1;
+        }
+        sort(vv1.begin(),vv1.end());
+     sort(vv2.begin(),vv2.end());
+     return vv1 == vv2 && vv3 == vv4;
+
+        
+    }
+};
