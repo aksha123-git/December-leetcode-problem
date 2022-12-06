@@ -1,0 +1,23 @@
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if(head == NULL || head->next == NULL)
+            return head;
+        
+        ListNode* odd = head;
+        ListNode* evn = head-> next;
+        ListNode* evenStart = head->next;
+        while(evn != NULL && evn->next != NULL){
+            odd-> next = evn ->next;
+            evn-> next = evn->next->next;
+            odd  = odd->next;
+            evn = evn->next;
+
+        }
+        odd->next = evenStart;
+        return head;
+
+
+        
+    }
+};
