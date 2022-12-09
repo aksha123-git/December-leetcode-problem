@@ -1,0 +1,18 @@
+class Solution {
+public:
+
+    int helper(TreeNode* root){
+        if(root==NULL){
+            return  maxi-mini;
+        }
+        maxi = max(maxi,root->val);
+        mini = max(mini, root->val);
+        return max(helper(root->left,maxi,mini), helper(root->right,maxi,mini));
+    }
+    int maxAncestorDiff(TreeNode* root) {
+        int mini = 0;
+        int maxi = 100000;
+         return helper(root,maxi,mini);
+        
+    }
+};
