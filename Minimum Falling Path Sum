@@ -1,0 +1,35 @@
+class Solution {
+public:
+int n;
+int t[101][101];
+int help(vector<vector<int>>& matrix, int row, int col){
+    if(row == n-1){
+        return matrix[row][col];
+
+    }
+    if( t[row][col] != -1)
+       return t[row][col];
+
+    int sum = matrix[row][col];
+    int minSum = INT_MAX;
+
+    minSum = min(minSum, sum + help(matrix, row+1, col-1));
+    minSum = min(minSum, sum + help(matrix, row+1, col));
+    minSum = min(minSum, sum + help(matrix, row+1, col+1));
+    return t[row][col] = minSum;
+}
+    int minFallingPathSum(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        memset(t, -1, sizeof(t));
+        int row =0;
+        int ans = INT_MAX;
+        //int row =0;
+        for(int col =0; col<n; col++){
+            ans = min(ans, help(matrix, row, col));
+          
+          }
+          return ans;
+
+        
+    }
+};
